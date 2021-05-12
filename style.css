@@ -25,6 +25,7 @@ nav {
 }
 h1 {
   font-size: 40px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 #nav-controls {
   display: flex;
@@ -35,12 +36,14 @@ h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 #content {
-  box-sizing: border-box;
   flex-grow: 1;
-  margin: 0 40px 0 40px;
+  box-sizing: border-box;
 }
 
 /*HOME PAGE STYLING************************************************************/
+.home {
+  margin: 0 40px 0 40px;
+}
 #title {
   display: flex;
   color: rgb(255, 255, 255);
@@ -61,4 +64,68 @@ h1 {
   width: 60%;
   line-height: 35px;
   margin-bottom: 80px;
+}
+
+/*MENU*********************************************************************/
+.menu {
+  background-color: rgb(252, 247, 232);
+  padding: 0 40px 0 40px;
+  animation-name: menuSliding;
+  animation-duration: 1s;
+}
+@keyframes menuSliding {
+  from {
+    flex-grow: 0;
+  }
+  to {
+    flex-grow: 1;
+  }
+}
+#menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 1fr;
+  width: 100%;
+  height: 100%;
+  animation-name: menuFade;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+@keyframes menuFade {
+  form {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+#menu > h2 {
+  grid-column: span 3;
+  align-self: center;
+  justify-self: center;
+  font-size: 30px;
+}
+.menuCard {
+  position: relative;
+  width: 80%;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.menuCard > img {
+  width: 100%;
+  object-fit: cover;
+}
+.menuCard > h3 {
+  font-weight: bold;
+  margin-top: 30px;
+  width: 80%;
+  font-size: 20px;
+}
+.menuCard > p {
+  margin-top: 15px;
+  width: 80%;
 }
