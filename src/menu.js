@@ -11,16 +11,15 @@ function createMenu() {
     "I salumi del Camp, il caprino lavorato, la nostra giardiniera di ortaggi.";
   const card1 = createMenuCard(card1URL, card1Title, card1Par);
 
-  const card2URL = "img/salumi.jpg";
-  const card2Title = "Sua Maestà il maiale";
-  const card2Par =
-    "I salumi del Camp, il caprino lavorato, la nostra giardiniera di ortaggi.";
+  const card2URL = "img/risotto.jpg";
+  const card2Title = "Risotto giallo";
+  const card2Par = "Risotto giallo con luganega in cialda di grana";
   const card2 = createMenuCard(card2URL, card2Title, card2Par);
 
-  const card3URL = "img/salumi.jpg";
-  const card3Title = "Sua Maestà il maiale";
+  const card3URL = "img/formaggi.jpg";
+  const card3Title = "Formaggi del Territorio";
   const card3Par =
-    "I salumi del Camp, il caprino lavorato, la nostra giardiniera di ortaggi.";
+    "La Brianza, duro, morbido, forte, delicato… e le nostre confetture";
   const card3 = createMenuCard(card3URL, card3Title, card3Par);
 
   menuContainer.appendChild(menuTitle);

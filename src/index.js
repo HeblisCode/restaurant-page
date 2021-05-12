@@ -4,31 +4,57 @@ import createMenu from "./menu";
 const NavControls = (function () {
   const _content = document.querySelector("#content");
   const _navTitle = document.querySelector("#restaurant-name");
-  const _menuTab = document.querySelector("#tab1");
-  const _tab2 = document.querySelector("#tab2");
-  const _tab3 = document.querySelector("#tab3");
+  const _menuTab = document.querySelector("#menuTab");
+  const _viniTab = document.querySelector("#viniTab");
+  const _infoTab = document.querySelector("#infoTab");
+  const _tabArray = [_menuTab, _viniTab, _infoTab];
+  let _currentSelection = null;
 
   function _appendToContent(node) {
-    _content.innerHTML = ""; //clean the contend div
+    _content.innerHTML = "";
     _content.appendChild(node);
   }
 
-  function _handleAnimationEnd(e) {
-    if (e.target.id !== "content") return;
-    _appendToContent(this);
-    _content.removeEventListener("animationend", _handleAnimationEnd);
+  function _removeAllSelected() {
+    _tabArray.forEach((tab) => {
+      tab.classList.remove("selected");
+    });
   }
 
-  _navTitle.addEventListener("click", () => {
+  function _handleTitleClick(e) {
+    _currentSelection = e.target.id;
     _content.classList.remove("menu");
+    _content.classList.add("title");
+    _removeAllSelected();
     _appendToContent(createTitle());
-  });
-  _menuTab.addEventListener("click", () => {
-    _content.addEventListener(
-      "animationend",
-      _handleAnimationEnd.bind(createMenu())
-    );
+  }
+
+  function _handleMenuClick(e) {
+    _currentSelection = e.target.id;
+    _content.classList.remove("title");
     _content.classList.add("menu");
+    _removeAllSelected();
+    e.target.classList.add("selected");
+
+    let node = null;
+    switch (e.target.id) {
+      case "menuTab":
+        node = createMenu();
+        break;
+      case "viniTab":
+        //node = createVini();
+        break;
+      case "infoTab":
+        //node = createInfo();
+        break;
+    }
+
+    _appendToContent(node);
+  }
+
+  _navTitle.addEventListener("click", _handleTitleClick);
+  _tabArray.forEach((tab) => {
+    tab.addEventListener("click", _handleMenuClick);
   });
 
   //_appendToContent.bind(createTitle())(); //initialize the homepage
