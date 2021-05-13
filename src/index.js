@@ -10,9 +10,9 @@ const NavControls = (function () {
   const _tabArray = [_menuTab, _viniTab, _infoTab];
   let _currentSelection = null;
 
-  function _appendToContent(node) {
+  function _appendToContent() {
     _content.innerHTML = "";
-    _content.appendChild(node);
+    _content.appendChild(this);
   }
 
   function _removeAllSelected() {
@@ -21,12 +21,25 @@ const NavControls = (function () {
     });
   }
 
+  function _fadeOutAndReplace(newNode) {
+    const contentChild = document.querySelector("#content > div");
+    if (contentChild === null) {
+      _appendToContent.bind(newNode)();
+      return;
+    }
+    contentChild.addEventListener(
+      "animationend",
+      _appendToContent.bind(newNode)
+    );
+    contentChild.style.cssText = "animation-name: fadeOut";
+  }
+
   function _handleTitleClick(e) {
     _currentSelection = e.target.id;
     _content.classList.remove("menu");
     _content.classList.add("title");
     _removeAllSelected();
-    _appendToContent(createTitle());
+    _fadeOutAndReplace(createTitle());
   }
 
   function _handleMenuClick(e) {
@@ -49,7 +62,7 @@ const NavControls = (function () {
         break;
     }
 
-    _appendToContent(node);
+    _fadeOutAndReplace(node);
   }
 
   _navTitle.addEventListener("click", _handleTitleClick);
