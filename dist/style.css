@@ -126,10 +126,10 @@ h1 {
   flex-direction: column;
   text-align: center;
   align-items: center;
+  align-self: center;
 }
 .menuCard > img {
-  width: 100%;
-  height: 400px;
+  width: 90%;
   object-fit: cover;
 }
 .menuCard > h3 {

@@ -5,6 +5,8 @@ function createMenuCard({ imgURL, title, paragraph }) {
   const par = document.createElement("p");
 
   image.setAttribute("src", imgURL);
+  image.setAttribute("heght", "800px");
+  image.setAttribute("width", "800px");
   h3title.innerText = title;
   par.innerText = paragraph;
 
