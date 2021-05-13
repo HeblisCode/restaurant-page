@@ -1,6 +1,7 @@
 import createTitle from "./title";
 import createMenu from "./menu";
 import createDessert from "./dessert";
+import createInfo from "./info";
 
 const NavControls = (function () {
   const _content = document.querySelector("#content");
@@ -62,7 +63,7 @@ const NavControls = (function () {
         node = createDessert();
         break;
       case "infoTab":
-        //node = createInfo();
+        node = createInfo();
         break;
     }
 
@@ -74,5 +75,11 @@ const NavControls = (function () {
     tab.addEventListener("click", _handleMenuClick);
   });
 
-  //_appendToContent.bind(createTitle())(); //initialize the homepage
+  function _init() {
+    _content.classList.add("title");
+    _currentSelection = "nameTab";
+    _fadeOutAndReplace(createTitle());
+  }
+
+  _init();
 })();

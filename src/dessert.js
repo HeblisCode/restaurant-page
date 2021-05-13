@@ -26,8 +26,6 @@ function createDessert() {
   dessertContainer.id = "menu";
   dessertTitle.innerText = "Dessert";
 
-  console.log(cards[0]);
-
   const card1 = createMenuCard(cards[0]);
   const card2 = createMenuCard(cards[1]);
   const card3 = createMenuCard(cards[2]);
