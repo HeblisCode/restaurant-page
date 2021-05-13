@@ -18,7 +18,7 @@ body {
   background-size: cover;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  justify-content: space-between;
 }
 nav {
   box-sizing: border-box;
@@ -93,18 +93,17 @@ h1 {
   background-color: rgba(255, 242, 221, 0.945);
   /*background-image: url(img/textured-paper.png);*/
   padding: 0 40px 0 40px;
-  flex-grow: 1;
   animation-name: slideIn;
   animation-duration: var(--animationTime1);
   animation-fill-mode: forwards;
-  transition: transform var(--animationTime2);
+  flex-grow: 0;
 }
 
 /*MENU TAB***********************************************************************/
 #menu {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 200px 1fr;
+  grid-template-rows: 20% 1fr;
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -143,7 +142,41 @@ h1 {
   margin-top: 15px;
   width: 80%;
 }
-
+/*INFO MENU****************************************************************************/
+#info {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 20% 1fr;
+  width: 100%;
+  height: 100%;
+}
+#info > h2 {
+  align-self: center;
+  justify-self: center;
+  font-size: 30px;
+}
+#mapInfo {
+  justify-self: center;
+  display: flex;
+  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+#mapInfo > p {
+  margin-top: 50px;
+}
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 434px;
+  width: 604px;
+}
+.mapouter {
+  position: relative;
+  text-align: right;
+  height: 434px;
+  width: 604px;
+}
 /*ANIMATIONS***************************************************************************/
 @keyframes fadeIn {
   from {
@@ -163,9 +196,9 @@ h1 {
 }
 @keyframes slideIn {
   from {
-    transform: translate(0, 100%);
+    flex-grow: 0;
   }
   to {
-    transform: translate(0, 0);
+    flex-grow: 1;
   }
 }
