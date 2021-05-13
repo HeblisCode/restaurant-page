@@ -90,8 +90,8 @@ h1 {
 
 /*MENU CLASS*********************************************************************/
 .menu {
-  background-color: rgba(255, 238, 181, 0.829);
-  background-image: url(img/textured-paper.png);
+  background-color: rgba(255, 242, 221, 0.945);
+  /*background-image: url(img/textured-paper.png);*/
   padding: 0 40px 0 40px;
   flex-grow: 1;
   animation-name: slideIn;
