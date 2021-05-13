@@ -3,6 +3,12 @@
   padding: 0;
   font-family: "Libre Baskerville", serif;
 }
+/*VARIABLES*********************************************************************************/
+:root {
+  --animationTime1: 0.7s;
+  --animationTime2: 0.3s;
+}
+/*GENERAL LAYOUT****************************************************************************/
 body {
   width: 100vw;
   height: 100vh;
@@ -12,16 +18,17 @@ body {
   background-size: cover;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 nav {
   box-sizing: border-box;
   display: flex;
   color: white;
-  height: 120px;
+  height: 100px;
   align-items: center;
   justify-content: space-between;
   font-weight: bold;
-  margin: 0 40px 0 40px;
+  margin: 10px 40px 10px 40px;
 }
 h1 {
   font-size: 40px;
@@ -53,6 +60,11 @@ h1 {
 /*HOME PAGE STYLING************************************************************/
 .title {
   margin: 0 40px 0 40px;
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: var(--animationTime2);
+  animation-fill-mode: forwards;
+  transition: opacity var(--animationTime2);
 }
 #title {
   display: flex;
@@ -76,19 +88,30 @@ h1 {
   margin-bottom: 80px;
 }
 
-/*MENU*********************************************************************/
+/*MENU CLASS*********************************************************************/
 .menu {
-  background-color: rgba(241, 218, 149, 0.795);
+  background-color: rgba(255, 238, 181, 0.829);
   background-image: url(img/textured-paper.png);
   padding: 0 40px 0 40px;
   flex-grow: 1;
+  animation-name: slideIn;
+  animation-duration: var(--animationTime1);
+  animation-fill-mode: forwards;
+  transition: transform var(--animationTime2);
 }
+
+/*MENU TAB***********************************************************************/
 #menu {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 200px 1fr;
   width: 100%;
   height: 100%;
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: var(--animationTime2);
+  animation-fill-mode: forwards;
+  transition: opacity var(--animationTime2);
 }
 #menu > h2 {
   grid-column: span 3;
@@ -107,6 +130,7 @@ h1 {
 }
 .menuCard > img {
   width: 100%;
+  height: 400px;
   object-fit: cover;
 }
 .menuCard > h3 {
@@ -118,4 +142,30 @@ h1 {
 .menuCard > p {
   margin-top: 15px;
   width: 80%;
+}
+
+/*ANIMATIONS***************************************************************************/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes slideIn {
+  from {
+    transform: translate(0, 100%);
+  }
+  to {
+    transform: translate(0, 0);
+  }
 }
